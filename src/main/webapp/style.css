@@ -1,0 +1,32 @@
+html {
+    min-height: 100vh;
+    font-family: sans-serif;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+form {
+
+}
+
+input {
+    border: 0px;
+    width: 100%;
+    border-bottom: 2px dotted black;
+    padding: 15px 10px;
+}
+
+textarea {
+    border: 0px;
+    resize: none;
+    box-shadow: none;
+    width: 100%;
+    padding: 15px 10px;
+    height: 80vh;
+    outline: none;
+}
+
+input:focus, outline:focus {
+    outline: none;
+    box-shadow: none;
+}
