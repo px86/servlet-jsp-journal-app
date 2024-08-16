@@ -1,0 +1,4 @@
+#+TITLE: servlet-jsp-journal-app
+#+AUTHOR: Pushkar Raj
+
+A web app for journaling, backed by sqlite database.
