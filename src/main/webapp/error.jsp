@@ -3,7 +3,7 @@
 
 <html>
   <head><title>Error!</title></head>
-  <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
+  <link href="<%= request.getContextPath() + "/css/style.css"%>" rel="stylesheet"/>
   <body>
     <main>
       <%= request.getAttribute("errorMessage") %>

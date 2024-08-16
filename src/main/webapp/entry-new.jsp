@@ -8,7 +8,7 @@ String root = request.getContextPath() + "/journal/";
 <html>
   <head>
     <title>New Entry</title>
-    <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
+    <link href="<%= request.getContextPath() + "/css/style.css"%>" rel="stylesheet"/>
   </head>
   <body>
     <section class="content">

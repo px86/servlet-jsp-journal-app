@@ -13,7 +13,7 @@ String editURL = pathToResource + "/edit";
 <html>
   <head>
     <title><%= entry.getTitle() %></title>
-    <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
+    <link href="<%= request.getContextPath() + "/css/style.css"%>" rel="stylesheet"/>
   </head>
   <body>
 

@@ -45,12 +45,6 @@ public class JournalEntryController extends HttpServlet {
     this.journalEntryService = new JournalEntryService();
   }
 
-  // @Override
-  // public void service(HttpServletRequest request, HttpServletResponse response)
-  //     throws ServletException, IOException {
-  //   doGet(request, response);
-  // }
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {

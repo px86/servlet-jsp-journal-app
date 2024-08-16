@@ -13,7 +13,7 @@ String newEntryPath = root + "new";
   <head>
     <title>All Journal Entries</title>
   </head>
-  <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
+  <link href="<%= request.getContextPath() + "/css/style.css"%>" rel="stylesheet"/>
   <body>
     <section class="content">
 

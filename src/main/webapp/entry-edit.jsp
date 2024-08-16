@@ -11,7 +11,7 @@ String pathToResource = root + journalEntry.getId();
 <html>
   <head>
     <title>Edit</title>
-    <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
+    <link href="<%= request.getContextPath() + "/css/style.css"%>" rel="stylesheet"/>
   </head>
   <body>
     <section class="content">

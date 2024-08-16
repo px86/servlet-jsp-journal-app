@@ -36,6 +36,9 @@
   </dependencies>
 
   <build>
+    <finalName>
+      journalapp
+    </finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
