@@ -1,5 +1,6 @@
 package io.github.px86.journalapp.repository;
 
+import io.github.px86.helper.DateUtil;
 import io.github.px86.journalapp.model.JournalEntry;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,7 +38,7 @@ public class JournalEntryRepository {
               id INTEGER PRIMARY KEY,
               title VARCHAR(256),
               body TEXT,
-              last_modified CHAR(22)
+              last_modified CHAR(32)
             );""");
     createTableStatement.executeUpdate();
   }
@@ -53,7 +54,7 @@ public class JournalEntryRepository {
         journalEntry.setId(rs.getLong("id"));
         journalEntry.setTitle(rs.getString("title"));
         journalEntry.setBody(rs.getString("body"));
-        journalEntry.setLastModified(rs.getString("last_modified"));
+        journalEntry.setLastModified(DateUtil.dateOf(rs.getString("last_modified")));
         return Optional.of(journalEntry);
       }
 
@@ -73,7 +74,7 @@ public class JournalEntryRepository {
         journalEntry.setId(rs.getLong("id"));
         journalEntry.setTitle(rs.getString("title"));
         journalEntry.setBody(rs.getString("body"));
-        journalEntry.setLastModified(rs.getString("last_modified"));
+        journalEntry.setLastModified(DateUtil.dateOf(rs.getString("last_modified")));
 
         journalEntries.add(journalEntry);
       }
@@ -90,7 +91,7 @@ public class JournalEntryRepository {
             "INSERT into journal_entries(title, body, last_modified) VALUES (?, ?, ?);");
     insertStatement.setString(1, journalEntry.getTitle());
     insertStatement.setString(2, journalEntry.getBody());
-    insertStatement.setString(3, journalEntry.getLastModified());
+    insertStatement.setString(3, DateUtil.timeStringOf(journalEntry.getLastModified()));
     insertStatement.executeUpdate();
   }
 
@@ -107,7 +108,7 @@ public class JournalEntryRepository {
             "UPDATE journal_entries SET title=?, body=?, last_modified=? WHERE id=?");
     updateStatement.setString(1, journalEntry.getTitle());
     updateStatement.setString(2, journalEntry.getBody());
-    updateStatement.setString(3, journalEntry.getLastModified());
+    updateStatement.setString(3, DateUtil.timeStringOf(journalEntry.getLastModified()));
     updateStatement.setLong(4, journalEntry.getId());
     updateStatement.executeUpdate();
   }

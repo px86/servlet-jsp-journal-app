@@ -3,8 +3,10 @@ package io.github.px86.journalapp.service;
 import io.github.px86.journalapp.model.JournalEntry;
 import io.github.px86.journalapp.repository.JournalEntryRepository;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class JournalEntryService {
   private JournalEntryRepository repo;
@@ -19,6 +21,18 @@ public class JournalEntryService {
 
   public List<JournalEntry> findAll() {
     return repo.findAll();
+  }
+
+  public List<JournalEntry> findAllSortedByTime() {
+    return this.repo.findAll().stream()
+        .sorted((a, b) -> a.getLastModified().compareTo(b.getLastModified()))
+        .collect(
+            Collectors.collectingAndThen(
+                Collectors.toList(),
+                list -> {
+                  Collections.reverse(list);
+                  return list;
+                }));
   }
 
   public void save(JournalEntry journalEntry) {

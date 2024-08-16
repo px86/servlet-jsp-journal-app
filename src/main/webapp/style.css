@@ -1,7 +1,8 @@
 root, html {
     font-family: sans-serif;
     font-size: 16px;
-
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -20,12 +21,19 @@ body * {
     margin: 2em auto;
 }
 
-.content > h1 {
+.content h1 {
     text-align: center;
 }
 
+#new-entry-link {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px auto;
+}
+
 #entries {
-    width: 80%;
+    width: 100%;
     padding: 15px;
     margin: 10px auto;
 }
@@ -55,6 +63,7 @@ form {
 }
 
 input, textarea {
+    font-size: 1rem;
     width: 100%;
     padding: 15px 10px;
 }

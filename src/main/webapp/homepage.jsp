@@ -16,9 +16,11 @@ String newEntryPath = root + "new";
   <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
   <body>
     <section class="content">
-      <h1>All Journal Entries</h1>
 
-      <a href="<%= newEntryPath %>">New Entry</a>
+      <div class="header">
+	<h1>All Journal Entries</h1>
+	<span><a id="new-entry-link" href="<%= newEntryPath %>">New Entry</a></span>
+      </div>
 
       <section id="entries">
 

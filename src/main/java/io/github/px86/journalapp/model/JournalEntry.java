@@ -1,31 +1,20 @@
 package io.github.px86.journalapp.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class JournalEntry {
   private Long id;
   private String title;
   private String body;
-  private String lastModified;
+  private Date lastModified;
 
   public JournalEntry() {}
 
-  public static String timeStringOf(Date date) {
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a");
-    sdf.setTimeZone(TimeZone.getTimeZone("IST"));
-    if (date == null) {
-      date = new Date();
-    }
-    return sdf.format(date);
-  }
-
-  public String getLastModified() {
+  public Date getLastModified() {
     return this.lastModified;
   }
 
-  public void setLastModified(String lastModified) {
+  public void setLastModified(Date lastModified) {
     this.lastModified = lastModified;
   }
 
@@ -60,6 +49,6 @@ public class JournalEntry {
   }
 
   public String toString() {
-    return this.title + "|" + this.body + "|" + this.lastModified;
+    return this.title + "(" + this.getId() + ")";
   }
 }

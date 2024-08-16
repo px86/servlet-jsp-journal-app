@@ -58,7 +58,7 @@ public class JournalEntryController extends HttpServlet {
     String path = getRequestURIWithoutContextPath(request);
 
     if (match("^/journal/?$", path)) {
-      request.setAttribute("journalEntries", this.journalEntryService.findAll());
+      request.setAttribute("journalEntries", this.journalEntryService.findAllSortedByTime());
       request.getRequestDispatcher("/homepage.jsp").forward(request, response);
     } else if (match("^/journal/[0-9]+$", path)) {
       Long id = Long.parseLong(path.replaceFirst("^/journal/", ""));
@@ -110,7 +110,7 @@ public class JournalEntryController extends HttpServlet {
       JournalEntry journalEntry = new JournalEntry();
       journalEntry.setTitle(request.getParameter("title"));
       journalEntry.setBody(request.getParameter("body"));
-      journalEntry.setLastModified(JournalEntry.timeStringOf(new Date()));
+      journalEntry.setLastModified(new Date());
 
       this.journalEntryService.save(journalEntry);
       response.sendRedirect(request.getContextPath() + "/journal");
@@ -123,11 +123,10 @@ public class JournalEntryController extends HttpServlet {
       journalEntry.setId(id);
       journalEntry.setTitle(request.getParameter("title"));
       journalEntry.setBody(request.getParameter("body"));
-      journalEntry.setLastModified(JournalEntry.timeStringOf(new Date()));
+      journalEntry.setLastModified(new Date());
 
       this.journalEntryService.update(journalEntry);
       response.sendRedirect(request.getContextPath() + "/journal");
     }
   }
-
 }
