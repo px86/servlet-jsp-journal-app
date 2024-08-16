@@ -29,6 +29,17 @@ public class JournalEntryRepository {
     if (this.dbConnection == null) {
       throw new Exception("database not initilized!");
     }
+
+    PreparedStatement createTableStatement =
+        dbConnection.prepareStatement(
+            """
+            CREATE TABLE IF NOT EXISTS journal_entries(
+              id INTEGER PRIMARY KEY,
+              title VARCHAR(256),
+              body TEXT,
+              last_modified CHAR(22)
+            );""");
+    createTableStatement.executeUpdate();
   }
 
   public Optional<JournalEntry> findById(Long id) {

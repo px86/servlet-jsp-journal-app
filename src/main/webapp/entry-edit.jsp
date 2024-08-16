@@ -14,12 +14,14 @@ String pathToResource = root + journalEntry.getId();
     <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
   </head>
   <body>
-    <form action="<%= pathToResource %>" method="POST">
-      <input name="id" type="hidden" type="number" value="<%= journalEntry.getId() %>"/>
-      <input name="title" type="text" value="<%= journalEntry.getTitle() %>"<br/>
-      <textarea name="body" ><%= journalEntry.getBody()%></textarea> <br/>
-      <button type="submit">Save</button>
-      <a href="<%= root %>">Cancel</a>
-    </form>
+    <section class="content">
+      <form action="<%= pathToResource %>" method="POST">
+	<input name="id" type="hidden" type="number" value="<%= journalEntry.getId() %>"/>
+	<input name="title" type="text" value="<%= journalEntry.getTitle() %>"<br/>
+	<textarea name="body" ><%= journalEntry.getBody()%></textarea> <br/>
+	<button type="submit">Save</button>
+	<a href="<%= root %>">Cancel</a>
+      </form>
+    </section>
   </body>
 </html>

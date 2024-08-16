@@ -6,6 +6,8 @@
 JournalEntry entry = (JournalEntry)request.getAttribute("journalEntry");
 String root = request.getContextPath() + "/journal/";
 String pathToResource = root + entry.getId();
+String deleteURL = pathToResource + "/delete";
+String editURL = pathToResource + "/edit";
 %>
 
 <html>
@@ -14,17 +16,21 @@ String pathToResource = root + entry.getId();
     <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
   </head>
   <body>
-    <main class="entry">
-	<div>
-	  <h2 class="title"><%= entry.getTitle() %></h2>
-	  <p><%= entry.getLastModified() %></p>
 
-	  <a href="<%= pathToResource + "/edit" %>">Edit</a>
-	  <a href="<%= pathToResource + "/delete" %>">Delete</a>
-	  <a href="<%= root %>">Home</a>
+    <section class="content">
+      <main class="entry">
+	<h1 class="title"><%= entry.getTitle() %></h1>
+ 	<span class="last-modified"><%= entry.getLastModified() %></span>
 
-	  <p class="body"><%= entry.getBody() %></p>
+	<div class="controls">
+	  <span class="btn edit-btn"><a href="<%= editURL %>">Edit</a></span>
+	  <span class="btn delete-btn"><a href="<%= deleteURL %>">Delete</a></span>
+	  <span class="btn home-btn"><a href="<%= root %>">Home</a></span>
 	</div>
-    </main>
+
+	<p class="body"><%= entry.getBody() %></p>
+      </main>
+    </section>
+
   </body>
 </html>

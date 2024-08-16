@@ -11,11 +11,13 @@ String root = request.getContextPath() + "/journal/";
     <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
   </head>
   <body>
-    <form action="<%= root %>" method="POST">
-      <input name="title" type="text" value="" placeholder="Enter title here" /><br/>
-      <textarea name="body">What's on your mind?</textarea> <br/>
-      <button type="submit">Save</button>
-      <a href="<%= root %>">Cancel</a>
-    </form>
+    <section class="content">
+      <form action="<%= root %>" method="POST">
+	<input name="title" type="text" value="" placeholder="Enter title here" /><br/>
+	<textarea name="body">What's on your mind?</textarea> <br/>
+	<button type="submit">Save</button>
+	<a href="<%= root %>">Cancel</a>
+      </form>
+    </section>
   </body>
 </html>

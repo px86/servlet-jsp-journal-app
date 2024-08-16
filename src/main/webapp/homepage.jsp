@@ -10,30 +10,34 @@ String newEntryPath = root + "new";
 %>
 
 <html>
-  <head><title>All Journal Entries</title></head>
+  <head>
+    <title>All Journal Entries</title>
+  </head>
   <link href="<%= request.getContextPath() + "/style.css"%>" rel="stylesheet"/>
   <body>
-    <h1>All Journal Entries</h1>
+    <section class="content">
+      <h1>All Journal Entries</h1>
 
-    <a href="<%= newEntryPath %>">New Entry</a>
+      <a href="<%= newEntryPath %>">New Entry</a>
 
-    <section id="entries">
-      <%for (JournalEntry entry: entries) {%>
-	<section class="entry">
+      <section id="entries">
 
-	  <a href="<%= root + entry.getId() %>"><h2 class="title"><%= entry.getTitle() %></h2></a>
-	  <p class="body"><%= entry.getBody() %></p>
+	<%for (JournalEntry entry: entries) {
+	  Long id = entry.getId();
+	  String resourceURL = root + id;
+	  String deleteURL = resourceURL + "/delete";
+	  String editURL = resourceURL + "/edit";
+	%>
 
-	  <div class="metadata">
-	    <span class="id"><%= entry.getId() %></span>
-	    <span class="last-modified"><%= entry.getLastModified() %></span>
+	<div class="entry">
+	  <span class="last-modified"><%= entry.getLastModified() %></span>
+	  <span class="title"><a href="<%= resourceURL %>"><%= entry.getTitle() %></a></span>
+	  <span class="btn delete-btn"><a href="<%= deleteURL %>">Delete</a></span>
+	  <span class="btn edit-btn"><a href="<%= editURL %>"    >Edit</a></span>
+	</div>
 
-	    <a href="<%= root + entry.getId() + "/delete"%>">Delete</a>
-	    <a href="<%= root + entry.getId() + "/edit"%>">Edit</a>
-
-	  </div>
-	</section>
       <%}%>
+      </section>
     </section>
 
   </body>
